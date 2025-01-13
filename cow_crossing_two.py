@@ -5,20 +5,27 @@ sys.stdout = open('circlecross.out', 'w')
 
 s = input().strip()
 
-open_set = set()
-total_pairs = 0
-tracker = {}
+letters = [[0,0] for _ in range(26)] 
+seen = set()
 
-for c in s:
-    if c in open_set:
-        # We are seeing c for the second time, so close it
-        open_set.remove(c)
-
-        # Count how many currently open cows started after c was opened
-        total_pairs += (len(open_set) - tracker[c])
+for i, letter in enumerate(s):
+    if letter not in seen:
+        letters[ord(letter) - ord("A")][0] = i
+        seen.add(letter)
     else:
-        # We are seeing c for the first time, so open it
-        tracker[c] = len(open_set)
-        open_set.add(c)
+        letters[ord(letter) - ord("A")][1] = i
 
-print(total_pairs)
+
+ans = 0
+for i in range(len(letters)):
+    for j in range(i + 1, len(letters)):
+        first = letters[i]
+        second = letters[j]
+        if (first[0] < second[0] < first[1] < second[1]) or (second[0] < first[0] < second[1] < first[1]):
+   
+            ans += 1
+
+print(ans)
+
+
+
