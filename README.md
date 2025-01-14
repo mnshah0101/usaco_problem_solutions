@@ -27,3 +27,6 @@ A collection of solutions to various USACO and Codeforces problems.
 - Counting Liars
 - Soldier and Bananas
 - Watermelon
+
+#Count number of files:
+ls -l . | egrep -c '^-'
