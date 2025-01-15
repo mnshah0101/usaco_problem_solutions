@@ -1,7 +1,5 @@
 import sys
 
-sys.stdin = open('test.in', 'r')
-sys.stdout = open('test.out', 'w')
 
 
 
@@ -11,25 +9,38 @@ weights = [int(x) for x in input().split()]
 
 
 weights.sort()
-differences = [0] * (len(weights) - 1)
 
-print(weights)
-
-for i, weight in enumerate(weights[:-1]):
-
-    differences[i] = abs(weights[i] - weights[i+1])
+min_instability = float('inf')
 
 
-differences.sort()
-differences = differences[::-1]
+#we can choose 2 randoms to be single
+for i in range(len(weights)):
+    for j in range(i+1, len(weights)):
+        start = 0
+        valid = []
 
-print(differences)
+        for n, weight in enumerate(weights):
+            if n != i and n!=j:
+                valid.append(weight)
 
 
-print(sum(differences[2:]))
+        
+        total_diff = 0
+        for n in range(0,len(valid),2):
+            total_diff += abs(valid[n]-valid[n+1])
+
+        min_instability = min(min_instability, total_diff)
+
+
+print(min_instability)
 
 
 
+
+
+
+
+        
 
 
    
