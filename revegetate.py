@@ -1,8 +1,8 @@
 import sys
 from collections import defaultdict
 
-sys.stdin = open('test.in', 'r')
-sys.stdout = open('test.out', 'w')
+sys.stdin = open('revegetate.in', 'r')
+sys.stdout = open('revegetate.out', 'w')
 
 
 adj = defaultdict(list)
@@ -31,7 +31,7 @@ for node in range(1,n+1):
         if colors[neighbor - 1] in avaiable:
             avaiable.remove(colors[neighbor - 1])
         
-        colors[index] = min(avaiable)
+    colors[index] = min(avaiable)
 
 
 print(''.join([str(x) for x in colors]))

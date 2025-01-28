@@ -1,8 +1,8 @@
 import sys
 from collections import defaultdict
 
-sys.stdin = open('test.in', 'r')
-sys.stdout = open('test.out', 'w')
+sys.stdin = open('factory.in', 'r')
+sys.stdout = open('factory.out', 'w')
 
 
 
